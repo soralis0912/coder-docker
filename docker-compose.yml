@@ -50,3 +50,10 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+    tunnel:
+        restart: unless-stopped
+        image: cloudflare/cloudflared
+        command: tunnel run
+        env_file:
+        - .env
+        
