@@ -37,8 +37,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password} # The PostgreSQL password (useful to connect to the database)
       POSTGRES_DB: ${POSTGRES_DB:-coder} # The PostgreSQL default database (automatically created at first launch)
     volumes:
-      # Remove ./coder_data to reset Coder data.
-      - ./coder_data:/var/lib/postgresql/data
+      # Remove ./coder_data/db to reset Coder data. Use subdir to avoid hidden files blocking initdb.
+      - ./coder_data/db:/var/lib/postgresql/data
     healthcheck:
       test:
         [
